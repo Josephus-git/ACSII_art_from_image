@@ -9,7 +9,7 @@ def main():
     width, height = resized_image.size
     win = Window(width, height, resized_image)
 
-    ans = Ansii(resized_image, False)
+   
     win.draw_picture()
 
     

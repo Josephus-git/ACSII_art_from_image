@@ -1,5 +1,5 @@
 from tkinter import Tk, BOTH, Canvas, ttk, Label, StringVar, X
-from PIL import ImageTk
+from PIL import ImageTk, Image
 from ansii import Ansii
 
 class Window:
@@ -46,7 +46,7 @@ class Window:
         self.draw_color_button()
     
     def redraw(self):
-        self.root.update_idletasks()
+        #self.root.update_idletasks()
         self.root.update()  
 
     def wait_for_close(self):
@@ -67,25 +67,19 @@ class Window:
 
     def draw_grey(self):
         self.grey = True
-        ansii_str = Ansii(self.img)._convert()
-        text = StringVar()
-        print(ansii_str)
-        text.set(ansii_str)
-        self.grey_label = Label(self.root, anchor='nw', padx=5, pady=5, background="white",
-                                 width=self.ansii_width, textvariable=text,
-                                 font=("Arial",8), justify='left')
-        self.grey_label.place(x=self.margin, y=self.margin)
+        photo = Ansii(self.img)._convert()
+        self.ansii_img_render_grey = ImageTk.PhotoImage(photo)
+        self.grey_label = Label(self.root, anchor='nw', padx=5, pady=5, height=self.height, 
+                                 width=self.width, image=self.ansii_img_render_grey)
+        self.grey_label.place(x=self.margin, y=self.margin)        
 
     def draw_color(self):
         self.color = True
-        ansii_str_color = Ansii(self.img, True)._convert()
-        print(ansii_str_color)
-        text_color = StringVar()
-        text_color.set(ansii_str_color)
-        self.color_label = Label(self.root, anchor='nw', padx=5, pady=5, background="white",
-                                 width=self.ansii_width, textvariable=text_color,
-                                 font=("Arial",8))
-        self.color_label.place(x=self.margin, y=self.margin)
+        photo = Ansii(self.img, True)._convert()
+        self.ansii_img_render_color = ImageTk.PhotoImage(photo)
+        self.color_label = Label(self.root, anchor='nw', padx=5, pady=5, height=self.height, 
+                                 width=self.width, image=self.ansii_img_render_color)
+        self.color_label.place(x=self.margin, y=self.margin) 
         
     def draw_pic_button(self):
         button = ttk.Button(self.root, text="Actual Picture", 
