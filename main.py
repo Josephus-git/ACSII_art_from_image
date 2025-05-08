@@ -1,20 +1,19 @@
 from PIL import Image
 from window import Window
-from ansii import Ansii
+import sys
 
 
 def main():
-    img = Image.open(r"sample/test.png")
-    resized_image = logic_for_resize(img)
-    width, height = resized_image.size
-    win = Window(width, height, resized_image)
-
-   
-    win.draw_picture()
-
-    
-
-    win.wait_for_close()
+    try:
+        _, image = sys.argv
+        img = Image.open(image)
+        resized_image = logic_for_resize(img)
+        width, height = resized_image.size
+        win = Window(width, height, resized_image)  
+        win.draw_picture()
+        win.wait_for_close()
+    except Exception:
+        print("Usage: python3 main.py path/to/image")
 
 def logic_for_resize(image):
     width, height = image.size

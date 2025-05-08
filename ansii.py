@@ -9,7 +9,7 @@ class Ansii:
     def logic_for_ansii_resize(self, image):
         width, height = image.size
         aspect_ratio = width/height
-        r_width = 40
+        r_width = 42
         r_height = int(r_width/aspect_ratio)
         new_size = image.resize((r_width, r_height))
         return new_size
@@ -75,10 +75,10 @@ class Ansii:
 
         if self.color:
             ascii_color_char_f = ("\n").join(ascii_color_char)
-            print(ascii_color_char_f)
+            print(ascii_color_char_f + "\n")
         else:
             ascii_char_f = ("\n").join(ascii_char)
-            print(ascii_char_f)
+            print(ascii_char_f + "\n")
 
         return to_screen
         
