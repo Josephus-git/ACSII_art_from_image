@@ -1,6 +1,6 @@
 from tkinter import Tk, BOTH, Canvas, ttk, Label, StringVar, X
 from PIL import ImageTk, Image
-from src.ansii import Ansii  # Assuming 'Ansii' is a custom class for ASCII art conversion.
+from ansii import Ansii  # Assuming 'Ansii' is a custom class for ASCII art conversion.
 
 class Window:
     """

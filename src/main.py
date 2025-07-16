@@ -1,5 +1,5 @@
 from PIL import Image 
-from src.window import Window  
+from window import Window  
 import sys  
 
 
@@ -29,14 +29,14 @@ def main():
         display_window = Window(image_width, image_height, display_image)
         
         # Call a method on the Window object to draw/display the picture.
-        display_window.draw_picture()
+        display_window._display_original_picture()
         
         # Call a method on the Window object to keep the window open until the user closes it.
         display_window.wait_for_close()
         
     except ValueError:
         # This exception typically occurs if an incorrect number of arguments is provided.
-        print("Usage: python3 main.py <path/to/image>")
+        print("Usage: python3 src/main.py images/<target_image>")
     except FileNotFoundError:
         # This exception occurs if the specified image file does not exist.
         print(f"Error: Image file not found at '{image_path}'. Please check the path.")
